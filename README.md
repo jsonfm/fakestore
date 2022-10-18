@@ -1,8 +1,6 @@
 # FakeStore.shop
 
-FakeStore somos comercio en línea con una gran cantidad de productos a comercializar. Estamos por lanzar nuestra implementación y necesitamos resolver los problemas que presenta nuestra aplicación.
-
-FakeStore tiene varios bugs, tareas sin completar y recursos a implementar para su lanzamiento oficial.
+FakeStore somos comercio en línea con una gran cantidad de productos a comercializar. 
 
 ### Instalación
 
@@ -10,16 +8,21 @@ FakeStore tiene varios bugs, tareas sin completar y recursos a implementar para 
 npm install
 ```
 
-### Ejecución
+### Desarrollo
 
 ```
-npm run start
+npm run dev
+```
+
+### Deploy
+
+```
+npm run deploy
 ```
 
 ### Debug
 
-- http://fakestore.shop
-- localhost:8080/public
+- http://localhost:5173/fakestore/
 
 ### Documentación
 
@@ -37,12 +40,8 @@ Función llamada 'getData' que se encarga de hacer Fetch a una API y debe de con
 
 ```javascript
 const getData = (api) => {
-  fetch(api)
-    .then((response) => response.json())
-    .then((response) => {
-      const products = response;
-    })
-    .catch((error) => console.log(error));
+  const products = await fetch(api).then(res => res.json());
+  ...
 };
 ```
 
@@ -71,60 +70,13 @@ intersectionObserver.observe($observe);
 
 ## RETO
 
-### Primer problema
+- [x] API fetch actualizada
+- [x] Renderizado de productos
+- [] Paginación con LocalStorage
+- [x] Configuración IntersectionObserver API
+- [x] Empaquetador Vite.js Añadido
+- [x] Depliegue en GitHub Pages
 
-1. Analiza la API: fakeapi.platzi.com
-2. Implementa la API de productos iniciando en el producto 5 y obteniendo los siguientes 10 productos.
-3. Guarda en localStorage la posición inicial ("pagination") y actualízala en cada petición nueva para traer los siguientes productos.
-4. Crear la lógica para implementar un scroll infinito con Intersection Observer.
-
-### Segundo Problema
-
-1. Crear la estructura de HTML para mostrar cada producto dentro de Items
-2. Crear un article con la clase "Card" para contener la imagen, título y precio de un producto:
-
-```html
-<article class="Card">
-  <img src="imagen.png" />
-  <h2>
-    Producto
-    <small>$ Precio</small>
-  </h2>
-</article>
-```
-
-3. Index.html debe de cumplir con los elementos mínimos de SEO (title = "FakeStore", descripcion = "...")
-
-### Tercer Problema
-
-Cuando cerramos la pestaña o recargamos la pagina se debe de volver a mostrar los primeros 10 Productos.
-
-1. Mostrar los primeros 10 productos.
-2. Eliminar el localStorage.
-3. Actualiza la función loadData() a Async/Await.
-
-### Cuarto Problema
-
-La API utilizada "fakeAPI" retorna 200 productos, utilizaremos la paginación propuesta en su documentación para obtener los productos en bloques de 10, cuando la última petición sea ejecutada debes de mostrar un mensaje "Todos los productos Obtenidos", a su vez debes de destruir el intersection observer.
-
-1. Implementar mensaje: "Todos los productos Obtenidos".
-2. Deja de observar el elemento "observe".
-
-### Quinto Problema
-
-Integra un empaquetador (Module Bundler) para optimizar tu proyecto (Webpack, Parcel, Rollup, Vite).
-
-### Sexto Problema (Bonus)
-
-Desplegar la aplicación en alguno de los siguientes servicios: GitHub Pages, Netlify, Vercel.
-
-### Enviar solución de reto
-
-Debes de hacer un "Fork" de este proyecto, revolver los problemas y crear un Pull Request hacia este repositorio.
-
-### Contribuir
-
-Si alguien quiere agregar o mejorar algo, lo invito a colaborar directamente en este repositorio: [laboratorio-fakestore](https://github.com/platzi/laboratorio-fakestore/)
 
 ### Licencia
 
